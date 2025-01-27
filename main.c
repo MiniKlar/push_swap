@@ -22,17 +22,59 @@ void insertion(list *liste, int nvNombre)
 	element->nbr = nvNombre;
 	element->next = liste->first;
 	liste->first = element;
+}
+void suppresion(list *liste)
+{
+	t_list *tmp;
 
-	return (liste);
+	tmp = liste->first->next;
+	free(liste->first);
+	liste->first = tmp;
+}
+void print_list(list *liste)
+{
+	while (liste->first->next != NULL)
+	{
+		printf("%d\n", liste->first->nbr);
+		liste->first = liste->first->next;
+	}
+	printf("%d\n", liste->first->nbr);
+}
+void free_list(list *liste)
+{
+	t_list *tmp;	
+	
+	while (liste->first->next != NULL)
+	{
+		tmp = liste->first->next;
+		free(liste->first);
+		liste->first = tmp;
+	}
+	free(liste->first);
+	free(liste);
 }
 
 int main(void)
 {
 	list *first_list;
+	t_list *tmp;
+	size_t	i;
 
 	first_list = initalisation();
-	printf("%d\n", first_list->first->nbr);
-	free(first_list->first);
-	free(first_list);
+	i = 6;
+	while (i <= 36)
+	{
+		insertion(first_list, i);
+		i += 10;
+	}
+	tmp = first_list->first;
+	print_list(first_list);
+	first_list->first = tmp;
+	tmp = first_list->first->next;
+	suppresion(first_list);
+	first_list->first = tmp;
+	print_list(first_list);
+	first_list->first = tmp;
+	free_list(first_list);
 	return (0);
 }
