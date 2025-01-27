@@ -12,6 +12,7 @@ typedef struct	s_list
 
 typedef struct	List
 {
-	t_list *first;
+	t_list	*first;
+	int		compteur;
 }				list;
 #endif
