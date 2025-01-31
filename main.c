@@ -1,137 +1,60 @@
-#include "chain_list.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/31 01:15:51 by lomont            #+#    #+#             */
+/*   Updated: 2025/01/31 05:10:11 by lomont           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void note_addCount(list *liste);
-void note_reduceCount(list *liste);
+#include "./LIB_C/LIB_C.h"
+#include "push_swap.h"
 
-list	*initalisation()
+int	main(int argc, char **argv)
 {
-	list *liste = malloc(sizeof(*liste));
-	t_list *element = malloc(sizeof(*element));
-
-	if (liste == NULL || element == NULL)
-		exit(EXIT_FAILURE);
-	element->nbr = 42;
-	element->next = NULL;
-	liste->first = element;
-	liste->compteur = 0;
-	note_addCount(liste);
-
-	return (liste);
-}
-void insertion(list *liste, int nvNombre)
-{
-	t_list *element = malloc(sizeof(*element));
-
-	if (element == NULL)
-		exit(EXIT_FAILURE);
-	element->nbr = nvNombre;
-	element->next = liste->first;
-	liste->first = element;
-	note_addCount(liste);
-}
-void insertion_middle(list *liste, t_list *node, int nvNombre)
-{
-	list *tmp;
-	t_list *element = malloc(sizeof(*element));
-
-	tmp = liste;
-	if (tmp == NULL || node == NULL)
-		exit(EXIT_FAILURE);
-	while (tmp->first != node)
-		tmp->first = tmp->first->next;
-	element->nbr = nvNombre;
-	element->next = tmp->first->next;
-	node->next = element;
-	note_addCount(liste);
-}
-void suppresion_middle(list *liste, t_list *deleteElement)
-{
-	t_list *tmp;
-
-	if (liste == NULL || deleteElement == NULL)
-		exit(EXIT_FAILURE);
-	while (liste->first != deleteElement)
-	{
-		tmp = liste->first;
-		liste->first = liste->first->next;
-	}
-	tmp->next = deleteElement->next;
-	free(deleteElement);
-	note_reduceCount(liste);
-}
-
-void suppresion(list *liste)
-{
-	t_list *tmp;
-
-	if (liste == NULL)
-		exit(EXIT_FAILURE);
-	tmp = liste->first->next;
-	free(liste->first);
-	liste->first = tmp;
-	note_reduceCount(liste);
-}
-void print_list(list *liste, t_list *tmp)
-{
-	if (liste == NULL)
-		exit(EXIT_FAILURE);
-	while (liste->first != NULL)
-	{
-		printf("%d -> ", liste->first->nbr);
-		liste->first = liste->first->next;
-	}
-	printf("NULL\n");
-	liste->first = tmp;
-}
-void free_list(list *liste)
-{
-	t_list *tmp;	
+	list *stack_a;
+	list *stack_b;
+	t_node *tmp;
 	
-	if (liste == NULL)
+	if (argc < 2)
 		exit(EXIT_FAILURE);
-	while (liste->first->next != NULL)
+	else if (!(check_numbers(argc, argv)) == true)
 	{
-		tmp = liste->first->next;
-		free(liste->first);
-		liste->first = tmp;
-		note_reduceCount(liste);
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
 	}
-	free(liste->first);
-	note_reduceCount(liste);
-	free(liste);
-}
-void note_addCount(list *liste)
-{
-	liste->compteur += 1;
-}
-
-void note_reduceCount(list *liste)
-{
-	liste->compteur -= 1;
-}
-
-int main(void)
-{
-	list *first_list;
-	t_list *tmp;
-	size_t	i;
-
-	first_list = initalisation();
-	//printf("count premier : %d\n", first_list->compteur);
-	i = 6;
-	while (i <= 36)
+	else if (!(check_duplicate(argv)))
 	{
-		insertion(first_list, i);
-		i += 10;
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
 	}
-	tmp = first_list->first;
-	print_list(first_list, tmp);
-	insertion_middle(first_list, first_list->first->next->next, 2110);
-	first_list->first = tmp;
-	print_list(first_list, tmp);
-	suppresion_middle(first_list, first_list->first->next->next->next);
-	first_list->first = tmp;
-	print_list(first_list, tmp);
-	free_list(first_list);
+	else
+	{
+		//ft_printf("\nPlus de 1 arguments, voici argc[%d]\n", argc);
+		(void)argv;
+	}
+	ft_printf("CHECK_NUMBERS & CHECK_DUPLICATE ok\n");
+	stack_a = fill_stack_a(argc, argv);
+	(void)stack_b;
+	printf("stack a : | stack b :\n");
+	tmp = stack_a->first;
+	while (stack_a->first != NULL)
+	{
+		printf("|%d|\n", stack_a->first->nbr);
+		stack_a->first = stack_a->first->next;
+	}
+	//printf("\n");
+	stack_a->first = tmp;
+	swap_a(stack_a);
+	printf("-------------------------------\n");
+	while (stack_a->first != NULL)
+	{
+		printf("|%d|\n", stack_a->first->nbr);
+		stack_a->first = stack_a->first->next;
+	}
+	//printf("\n");
 	return (0);
 }
