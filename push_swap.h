@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 05:01:10 by lomont            #+#    #+#             */
-/*   Updated: 2025/01/31 05:13:39 by lomont           ###   ########.fr       */
+/*   Updated: 2025/01/31 07:17:19 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,9 @@ list *fill_stack_b(void);
 void swap_a(list *stack_a);
 void swap_b(list *stack_b);
 void swap_a_and_b(list *stack_a, list *stack_b);
-
+list *push_a(list *stack_a, list *stack_b);
+list *push_b(list *stack_a, list *stack_b);
+list *rotate_a(list *stack_a);
+list *rotate_b(list *stack_b);
+void rotate_a_and_b(list *stack_a,list *stack_b);
 #endif

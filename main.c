@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 01:15:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/01/31 05:10:11 by lomont           ###   ########.fr       */
+/*   Updated: 2025/01/31 07:02:19 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,29 @@ int	main(int argc, char **argv)
 		stack_a->first = stack_a->first->next;
 	}
 	//printf("\n");
+	stack_b = NULL;
 	stack_a->first = tmp;
-	swap_a(stack_a);
+	stack_b = rotate_a(stack_a);
 	printf("-------------------------------\n");
 	while (stack_a->first != NULL)
 	{
 		printf("|%d|\n", stack_a->first->nbr);
 		stack_a->first = stack_a->first->next;
 	}
+	// while (stack_a->first != NULL)
+	// {
+	// 	if (stack_b->first == NULL)
+	// 	{
+	// 		printf("|%d   &      |\n", stack_a->first->nbr);
+	// 		stack_a->first = stack_a->first->next;
+	// 	}
+	// 	else
+	// 	{
+	// 		printf("|%d   &   %d|\n", stack_a->first->nbr, stack_b->first->nbr);
+	// 		stack_a->first = stack_a->first->next;
+	// 		stack_b->first = stack_b->first->next;
+	// 	}
+	// }
 	//printf("\n");
 	return (0);
 }

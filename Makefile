@@ -10,6 +10,11 @@ SRC = parsing.c \
 	./instructions/swap_a.c \
 	./instructions/swap_b.c \
 	./instructions/swap_a_and_b.c \
+	./instructions/push_a.c \
+	./instructions/push_b.c \
+	./instructions/rotate_a.c \
+	./instructions/rotate_b.c \
+	./instructions/rotate_a_and_b.c \
 
 OBJ = $(SRC:.c=.o)
 
