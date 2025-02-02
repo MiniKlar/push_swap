@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 05:01:10 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 09:36:13 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/02 14:10:51 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void rotate_a_and_b(list *stack_a,list *stack_b);
 list *reverse_rotate_a(list *stack_a);
 list *reverse_rotate_b(list *stack_b);
 void reverse_rotate_a_and_b(list *stack_a, list *stack_b);
+void sort_3_stack(list *stack_a);
 #endif

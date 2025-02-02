@@ -18,6 +18,7 @@ SRC = parsing.c \
 	./instructions/reverse_rotate_a.c \
 	./instructions/reverse_rotate_b.c \
 	./instructions/reverse_rotate_a_and_b.c \
+	./algorithm/sorting.c \
 
 OBJ = $(SRC:.c=.o)
 

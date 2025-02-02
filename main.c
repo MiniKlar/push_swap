@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 01:15:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 12:26:54 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/02 14:11:12 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,30 +56,29 @@ int	main(int argc, char **argv)
 	}
 	stack_b = NULL;
 	stack_a->first = tmp;
-	stack_b = push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	swap_a_and_b(stack_a, stack_b);
+	//stack_b = push_b(stack_a, stack_b);
+	sort_3_stack(stack_a);
 	//printf("a :|%d|\n", stack_a->first->nbr);
 	printf("-------------------------------\n");
-	// while (stack_a->first != NULL)
-	// {
-	// 	printf("|%d|\n", stack_a->first->nbr);
-	// 	stack_a->first = stack_a->first->next;
-	// }
-	while (stack_a->first != NULL && stack_b->first != NULL)
+	while (stack_a->first != NULL)
 	{
-		if (stack_b->first == NULL)
-		{
-			printf("a |%d   &      |\n", stack_a->first->nbr);
-			stack_a->first = stack_a->first->next;
-		}
-		else
-		{
-			printf("|%d   &   %d|\n", stack_a->first->nbr, stack_b->first->nbr);
-			stack_a->first = stack_a->first->next;
-			stack_b->first = stack_b->first->next;
-		}
+		printf("|%d|\n", stack_a->first->nbr);
+		stack_a->first = stack_a->first->next;
 	}
+	// while (stack_a->first != NULL && stack_b->first != NULL)
+	// {
+	// 	if (stack_b->first == NULL)
+	// 	{
+	// 		printf("a |%d   &      |\n", stack_a->first->nbr);
+	// 		stack_a->first = stack_a->first->next;
+	// 	}
+	// 	else
+	// 	{
+	// 		printf("|%d   &   %d|\n", stack_a->first->nbr, stack_b->first->nbr);
+	// 		stack_a->first = stack_a->first->next;
+	// 		stack_b->first = stack_b->first->next;
+	// 	}
+	// }
 	if (stack_a->first == NULL)
 		printf("stack a null");
 	else if (stack_b->first == NULL)
