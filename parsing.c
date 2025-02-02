@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 03:37:21 by lomont            #+#    #+#             */
-/*   Updated: 2025/01/31 03:53:38 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/02 05:17:19 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ bool check_duplicate(char **argv)
 	k = i + 1;
 	while(argv[i])
 	{
+		k = i + 1;
 		while (argv[k])
 		{
 			if (ft_atol(argv[i]) != ft_atol(argv[k]))

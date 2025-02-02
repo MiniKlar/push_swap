@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 01:15:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/01/31 07:02:19 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/02 11:18:58 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,35 +41,52 @@ int	main(int argc, char **argv)
 	(void)stack_b;
 	printf("stack a : | stack b :\n");
 	tmp = stack_a->first;
-	while (stack_a->first != NULL)
+	if (stack_a->first->next != NULL)
 	{
-		printf("|%d|\n", stack_a->first->nbr);
-		stack_a->first = stack_a->first->next;
+		while (stack_a->first != NULL)
+		{
+			printf("|%d|\n", stack_a->first->nbr);
+			stack_a->first = stack_a->first->next;
+		}
 	}
-	//printf("\n");
+	else
+	{
+		printf("moins de 2 nombres dans la stack a");
+		exit(EXIT_FAILURE);
+	}
 	stack_b = NULL;
 	stack_a->first = tmp;
-	stack_b = rotate_a(stack_a);
+	reverse_rotate_a(stack_a);
+	stack_b = push_b(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	push_b(stack_a, stack_b);
+	reverse_rotate_b(stack_b);
+	reverse_rotate_a_and_b(stack_a, stack_b);
+	//printf("a :|%d|\n", stack_a->first->nbr);
 	printf("-------------------------------\n");
-	while (stack_a->first != NULL)
-	{
-		printf("|%d|\n", stack_a->first->nbr);
-		stack_a->first = stack_a->first->next;
-	}
 	// while (stack_a->first != NULL)
 	// {
-	// 	if (stack_b->first == NULL)
-	// 	{
-	// 		printf("|%d   &      |\n", stack_a->first->nbr);
-	// 		stack_a->first = stack_a->first->next;
-	// 	}
-	// 	else
-	// 	{
-	// 		printf("|%d   &   %d|\n", stack_a->first->nbr, stack_b->first->nbr);
-	// 		stack_a->first = stack_a->first->next;
-	// 		stack_b->first = stack_b->first->next;
-	// 	}
+	// 	printf("|%d|\n", stack_a->first->nbr);
+	// 	stack_a->first = stack_a->first->next;
 	// }
-	//printf("\n");
+	while (stack_a->first != NULL && stack_b->first != NULL)
+	{
+		if (stack_b->first == NULL)
+		{
+			printf("a |%d   &      |\n", stack_a->first->nbr);
+			stack_a->first = stack_a->first->next;
+		}
+		else
+		{
+			printf("|%d   &   %d|\n", stack_a->first->nbr, stack_b->first->nbr);
+			stack_a->first = stack_a->first->next;
+			stack_b->first = stack_b->first->next;
+		}
+	}
+	if (stack_a->first == NULL)
+		printf("stack a null");
+	else if (stack_b->first == NULL)
+		printf("stack_b null");
+	printf("\n");
 	return (0);
 }

@@ -15,6 +15,9 @@ SRC = parsing.c \
 	./instructions/rotate_a.c \
 	./instructions/rotate_b.c \
 	./instructions/rotate_a_and_b.c \
+	./instructions/reverse_rotate_a.c \
+	./instructions/reverse_rotate_b.c \
+	./instructions/reverse_rotate_a_and_b.c \
 
 OBJ = $(SRC:.c=.o)
 

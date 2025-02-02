@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 05:19:11 by lomont            #+#    #+#             */
-/*   Updated: 2025/01/31 06:01:29 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/02 08:25:33 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ list *push_a(list *stack_a, list *stack_b)
 		{
 			tmp = stack_a->first;
 			stack_a->first = stack_b->first;
-			stack_a->first->next = tmp;
 			stack_b->first = stack_b->first->next;
+			stack_a->first->next = tmp;
 		}
 	}
 	write(1, "pa\n", 3);

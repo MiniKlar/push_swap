@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_a.c                                         :+:      :+:    :+:   */
+/*   reverse_rotate_b.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 06:46:25 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 09:40:39 by lomont           ###   ########.fr       */
+/*   Created: 2025/02/02 09:33:04 by lomont            #+#    #+#             */
+/*   Updated: 2025/02/02 11:17:51 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./LIB_C/LIB_C.h"
 #include "push_swap.h"
 
-list *rotate_a(list *stack_a)
+list *reverse_rotate_b(list *stack_b)
 {
-	t_node *tmp_second;
-	t_node *tmp_first;
+	t_node 	*end;
+	t_node 	*address_first;
 	
-	if (stack_a->first->next == NULL)
+	if (stack_b->first->next == NULL)
 		exit(EXIT_FAILURE);
-	tmp_first = stack_a->first;
-	stack_a->first = stack_a->first->next;
-	tmp_second = stack_a->first;
-	while (stack_a->first->next != NULL)
-		stack_a->first = stack_a->first->next;
-	stack_a->first->next = tmp_first;
-	stack_a->first->next->next = NULL;
-	stack_a->first = tmp_second;
-	write(1, "ra\n", 3);
-	return (stack_a);
+	address_first = stack_b->first;
+	while (stack_b->first->next->next != NULL)
+		stack_b->first = stack_b->first->next;
+	end = stack_b->first;
+	stack_b->first->next->next = address_first;
+	stack_b->first = stack_b->first->next;
+	end->next = NULL;
+	write(1, "rrb\n", 4);
+	return (stack_b);
 }

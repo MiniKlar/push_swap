@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_a.c                                         :+:      :+:    :+:   */
+/*   reverse_rotate_a_and_b.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 06:46:25 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 09:40:39 by lomont           ###   ########.fr       */
+/*   Created: 2025/02/02 09:34:43 by lomont            #+#    #+#             */
+/*   Updated: 2025/02/02 09:36:01 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./LIB_C/LIB_C.h"
 #include "push_swap.h"
 
-list *rotate_a(list *stack_a)
+void reverse_rotate_a_and_b(list *stack_a, list *stack_b)
 {
-	t_node *tmp_second;
-	t_node *tmp_first;
-	
-	if (stack_a->first->next == NULL)
-		exit(EXIT_FAILURE);
-	tmp_first = stack_a->first;
-	stack_a->first = stack_a->first->next;
-	tmp_second = stack_a->first;
-	while (stack_a->first->next != NULL)
-		stack_a->first = stack_a->first->next;
-	stack_a->first->next = tmp_first;
-	stack_a->first->next->next = NULL;
-	stack_a->first = tmp_second;
-	write(1, "ra\n", 3);
-	return (stack_a);
+	reverse_rotate_a(stack_a);
+	reverse_rotate_a(stack_b);
+	write(1, "rrr\n", 4);
 }
