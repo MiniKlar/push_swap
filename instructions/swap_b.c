@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 04:59:14 by lomont            #+#    #+#             */
-/*   Updated: 2025/01/31 05:00:44 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/02 12:31:01 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ void swap_b(list *stack_b)
 		stack_b->first->next = tmp;
 		stack_b->first->next->next = tmp2;
 	}
+	write(1, "sb\n", 3);
 }

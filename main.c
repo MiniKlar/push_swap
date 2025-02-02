@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 01:15:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 11:18:58 by lomont           ###   ########.fr       */
+/*   Updated: 2025/02/02 12:26:54 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,9 @@ int	main(int argc, char **argv)
 	}
 	stack_b = NULL;
 	stack_a->first = tmp;
-	reverse_rotate_a(stack_a);
 	stack_b = push_b(stack_a, stack_b);
 	push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-	reverse_rotate_b(stack_b);
-	reverse_rotate_a_and_b(stack_a, stack_b);
+	swap_a_and_b(stack_a, stack_b);
 	//printf("a :|%d|\n", stack_a->first->nbr);
 	printf("-------------------------------\n");
 	// while (stack_a->first != NULL)
