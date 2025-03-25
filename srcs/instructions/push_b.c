@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_a.c                                           :+:      :+:    :+:   */
+/*   push_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 05:19:11 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 08:25:33 by lomont           ###   ########.fr       */
+/*   Created: 2025/01/31 05:19:09 by lomont            #+#    #+#             */
+/*   Updated: 2025/03/25 04:24:53 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./LIB_C/LIB_C.h"
 #include "push_swap.h"
 
-list *push_a(list *stack_a, list *stack_b)
+void	push_b(t_node *stack_a, t_node *stack_b, bool print)
 {
 	t_node *tmp;
-	if (!stack_b->first)
+	if (!stack_a->first)
 		return (NULL);
 	else
 	{
-		if (!stack_a->first)
+		if (stack_b == NULL)
 		{
-			stack_a = initalisation(stack_b->first->nbr);
-			stack_b->first = stack_b->first->next;
+			stack_b = initalisation(stack_a->first->nbr);
+			stack_a->first = stack_a->first->next;
 		}
 		else
 		{
-			tmp = stack_a->first;
-			stack_a->first = stack_b->first;
-			stack_b->first = stack_b->first->next;
-			stack_a->first->next = tmp;
+			tmp = stack_b->first;
+			stack_b->first = stack_a->first;
+			stack_a->first = stack_a->first->next;
+			stack_b->first->next = tmp;
 		}
 	}
-	write(1, "pa\n", 3);
-	return (stack_a);
+	if (!print)
+		write(1, "pb\n", 3);
+	return (stack_b);
 }

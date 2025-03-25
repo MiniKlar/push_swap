@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_a_and_b.c                                   :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 07:13:23 by lomont            #+#    #+#             */
-/*   Updated: 2025/01/31 07:16:31 by lomont           ###   ########.fr       */
+/*   Created: 2025/03/25 02:16:40 by lomont            #+#    #+#             */
+/*   Updated: 2025/03/25 04:24:49 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./LIB_C/LIB_C.h"
 #include "push_swap.h"
 
-void rotate_a_and_b(list *stack_a,list *stack_b)
+void	ft_exit(char *str)
 {
-	rotate_a(stack_a);
-	rotate_b(stack_b);
-	write(1, "rr\n", 3);
+	int i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	exit(EXIT_FAILURE);
 }
+

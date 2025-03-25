@@ -6,18 +6,17 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 08:45:38 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 11:13:28 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/25 04:24:58 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./LIB_C/LIB_C.h"
 #include "push_swap.h"
 
-list *reverse_rotate_a(list *stack_a)
+void	reverse_rotate_a(t_node *stack_a, bool print)
 {
 	t_node 	*end;
 	t_node 	*address_first;
-	
+
 	if (stack_a->first->next == NULL)
 		exit(EXIT_FAILURE);
 	address_first = stack_a->first;
@@ -27,6 +26,6 @@ list *reverse_rotate_a(list *stack_a)
 	stack_a->first->next->next = address_first;
 	stack_a->first = stack_a->first->next;
 	end->next = NULL;
-	write(1, "rra\n", 4);
-	return (stack_a);
+	if (!print)
+		write(1, "rra\n", 4);
 }

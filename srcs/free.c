@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_b.c                                           :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 04:59:14 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 12:31:01 by lomont           ###   ########.fr       */
+/*   Created: 2025/03/25 02:17:58 by lomont            #+#    #+#             */
+/*   Updated: 2025/03/25 04:24:45 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include "../LIB_C/LIB_C.h"
+#include "push_swap.h"
 
-void swap_b(list *stack_b)
+void	free_stack(t_node *stack)
 {
 	t_node *tmp;
-	t_node *tmp2;
 
-	if (stack_b->first == NULL || stack_b->first->next == NULL)
-		return ;
-	else
+	if (stack == NULL)
+		exit(EXIT_FAILURE);
+	while (stack->next != NULL)
 	{
-		tmp = stack_b->first;
-		tmp2 = stack_b->first->next->next;
-		stack_b->first = stack_b->first->next;
-		stack_b->first->next = tmp;
-		stack_b->first->next->next = tmp2;
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
 	}
-	write(1, "sb\n", 3);
+	free(stack);
 }

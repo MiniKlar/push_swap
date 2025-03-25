@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_a.c                                         :+:      :+:    :+:   */
+/*   swap_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 06:46:25 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 09:40:39 by lomont           ###   ########.fr       */
+/*   Created: 2025/01/31 03:55:35 by lomont            #+#    #+#             */
+/*   Updated: 2025/03/25 04:25:10 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./LIB_C/LIB_C.h"
 #include "push_swap.h"
 
-list *rotate_a(list *stack_a)
+void	swap_a(t_node *stack_a, bool print)
 {
-	t_node *tmp_second;
-	t_node *tmp_first;
-	
-	if (stack_a->first->next == NULL)
+	t_node *tmp;
+
+	if (stack_a->first == NULL || stack_a->first->next == NULL)
 		exit(EXIT_FAILURE);
-	tmp_first = stack_a->first;
-	stack_a->first = stack_a->first->next;
-	tmp_second = stack_a->first;
-	while (stack_a->first->next != NULL)
+	else
+	{
+		tmp = stack_a->first;
 		stack_a->first = stack_a->first->next;
-	stack_a->first->next = tmp_first;
-	stack_a->first->next->next = NULL;
-	stack_a->first = tmp_second;
-	write(1, "ra\n", 3);
-	return (stack_a);
+		tmp->next = stack_a->first->next;
+		stack_a->first->next = tmp;
+	}
+	if (!print)
+		write(1, "sa\n", 3);
 }

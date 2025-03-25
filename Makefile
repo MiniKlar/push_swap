@@ -1,11 +1,10 @@
 NAME = push_swap
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g -I includes
 CLONE = git clone
 SRC = parsing.c \
 	main.c \
 	./utils/utils.c \
-	./chain_list/chain_list.c \
 	./init_stack.c \
 	./instructions/swap_a.c \
 	./instructions/swap_b.c \
@@ -19,10 +18,17 @@ SRC = parsing.c \
 	./instructions/reverse_rotate_b.c \
 	./instructions/reverse_rotate_a_and_b.c \
 	./algorithm/sorting.c \
+	./utils.c \
+	./init_a_to_b.c \
+	./init_b_to_a.c \
+	./init_stack.c \
+	./stack_utils.c \
+	./srcs/exit.c \
+	./srcs/free.c \
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME) 
+all: $(NAME)
 
 LIB_C:
 	$(CLONE) git@github.com:MiniKlar/LIB_C.git LIB_C; cd /home/lomont/42_miniklar/push_swap/LIB_C; make; make clean

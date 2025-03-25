@@ -1,21 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate_a_and_b.c                           :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/02 09:34:43 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 09:36:01 by lomont           ###   ########.fr       */
+/*   Created: 2025/03/25 02:46:30 by lomont            #+#    #+#             */
+/*   Updated: 2025/03/25 02:46:31 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./LIB_C/LIB_C.h"
-#include "push_swap.h"
-
-void reverse_rotate_a_and_b(list *stack_a, list *stack_b)
-{
-	reverse_rotate_a(stack_a);
-	reverse_rotate_a(stack_b);
-	write(1, "rrr\n", 4);
-}

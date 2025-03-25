@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_b.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate_b.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 05:19:09 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 07:30:02 by lomont           ###   ########.fr       */
+/*   Created: 2025/02/02 09:33:04 by lomont            #+#    #+#             */
+/*   Updated: 2025/03/25 04:25:00 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./LIB_C/LIB_C.h"
 #include "push_swap.h"
 
-list *push_b(list *stack_a, list *stack_b)
+void	reverse_rotate_b(t_node *stack_b, bool print)
 {
-	t_node *tmp;
-	if (!stack_a->first)
-		return (NULL);
-	else
-	{
-		if (stack_b == NULL)
-		{
-			stack_b = initalisation(stack_a->first->nbr);
-			stack_a->first = stack_a->first->next;
-		}
-		else
-		{
-			tmp = stack_b->first;
-			stack_b->first = stack_a->first;
-			stack_a->first = stack_a->first->next;
-			stack_b->first->next = tmp;
-		}
-	}
-	write(1, "pb\n", 3);
+	t_node 	*end;
+	t_node 	*address_first;
+
+	if (stack_b->first->next == NULL)
+		exit(EXIT_FAILURE);
+	address_first = stack_b->first;
+	while (stack_b->first->next->next != NULL)
+		stack_b->first = stack_b->first->next;
+	end = stack_b->first;
+	stack_b->first->next->next = address_first;
+	stack_b->first = stack_b->first->next;
+	end->next = NULL;
+	if (!print)
+		write(1, "rrb\n", 4);
 	return (stack_b);
 }

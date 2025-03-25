@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_a.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate_a_and_b.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 03:55:35 by lomont            #+#    #+#             */
-/*   Updated: 2025/02/02 14:23:53 by lomont           ###   ########.fr       */
+/*   Created: 2025/02/02 09:34:43 by lomont            #+#    #+#             */
+/*   Updated: 2025/03/25 04:24:56 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-#include "../LIB_C/LIB_C.h"
+#include "push_swap.h"
 
-void swap_a(list *stack_a)
+void	reverse_rotate_a_and_b(t_node *stack_a, t_node *stack_b, bool print)
 {
-	t_node *tmp;
-
-	if (stack_a->first == NULL || stack_a->first->next == NULL)
-		exit(EXIT_FAILURE);
-	else
-	{
-		tmp = stack_a->first;
-		stack_a->first = stack_a->first->next;
-		tmp->next = stack_a->first->next;
-		stack_a->first->next = tmp;
-	}
-	write(1, "sa\n", 3);
+	reverse_rotate_a(stack_a, true);
+	reverse_rotate_a(stack_b, true);
+	if (!print)
+		write(1, "rrr\n", 4);
 }
