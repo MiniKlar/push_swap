@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 00:28:09 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 04:30:17 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/25 06:17:48 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_node	*find_max(t_node *stack)
 void	rotate_both(t_node **stack_a, t_node **stack_b, t_node *cheapest_node)
 {
 	while (*stack_b != cheapest_node->target_node && *stack_a != cheapest_node)
-		rotate_a_and_b(stack_a, stack_b, false);
+		rotate_a_and_b(*stack_a, *stack_b, false);
 	current_index(*stack_a);
 	current_index(*stack_b);
 }
@@ -80,16 +80,16 @@ void prep_for_push(t_node **stack, t_node *top_node, char stack_name)
 		if (stack_name == 'a')
 		{
 			if (top_node->above_median)
-				rotate_a(stack, false);
+				rotate_a(*stack, false);
 			else
-				reverse_rotate_a(stack, false);
+				reverse_rotate_a(*stack, false);
 		}
 		else if (stack_name == 'b')
 		{
 			if (top_node->above_median)
-				rotate_b(stack, false);
+				rotate_b(*stack, false);
 			else
-				reverse_rotate_b(stack, false);
+				reverse_rotate_b(*stack, false);
 		}
 	}
 }

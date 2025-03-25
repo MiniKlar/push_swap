@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 04:59:14 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 04:25:12 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/25 05:51:32 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void	swap_b(t_node *stack_b, bool print)
 	t_node *tmp;
 	t_node *tmp2;
 
-	if (stack_b->first == NULL || stack_b->first->next == NULL)
+	if (stack_b == NULL || stack_b->next == NULL)
 		return ;
 	else
 	{
-		tmp = stack_b->first;
-		tmp2 = stack_b->first->next->next;
-		stack_b->first = stack_b->first->next;
-		stack_b->first->next = tmp;
-		stack_b->first->next->next = tmp2;
+		tmp = stack_b;
+		tmp2 = stack_b->next->next;
+		stack_b = stack_b->next;
+		stack_b->next = tmp;
+		stack_b->next->next = tmp2;
 	}
 	if (!print)
 		write(1, "sb\n", 3);

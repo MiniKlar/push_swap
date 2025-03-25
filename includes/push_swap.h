@@ -6,21 +6,19 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 05:01:10 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 04:31:22 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/25 06:37:05 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <limits.h>
-# include "LIB_C/LIB_C.h"
-
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
+
+# include <limits.h>
+# include "../LIB_C/LIB_C.h"
+
 // #define INT_MAX 2147483647
 // #define INT_MIN -2147483648
 
-int ft_str_only_digit(char *str);
-bool check_numbers(int argc, char **argv);
-bool check_duplicate(char **argv);
 
 typedef struct	s_node
 {
@@ -35,6 +33,9 @@ typedef struct	s_node
 }				t_node;
 
 
+int		ft_str_only_digit(char *str);
+bool	check_numbers(char *argv);
+bool	check_duplicate(t_node *stack_a, int n);
 void 	swap_a(t_node *stack_a, bool print);
 void 	swap_b(t_node *stack_b, bool print);
 void 	swap_a_and_b(t_node *stack_a, t_node *stack_b, bool print);
@@ -58,7 +59,7 @@ void	rotate_both(t_node **stack_a, t_node **stack_b, t_node *cheapest_node);
 t_node	*find_min(t_node *stack);
 t_node	*find_max(t_node *stack);
 void	init_stack_a(t_node **stack_a, char **argv);
-void	append_node (t_node **stack, int n);
+void	append_node(t_node **stack, int n);
 void	current_index(t_node *stack);
 void	set_target_a(t_node *stack_a, t_node *stack_b);
 void	calcul_cost_a(t_node *stack_a, t_node *stack_b);
@@ -69,6 +70,10 @@ void	set_target_b(t_node *stack_a, t_node *stack_b);
 void	move_a_to_b(t_node **stack_a, t_node **stack_b);
 void	move_b_to_a(t_node **stack_a, t_node **stack_b);
 void	min_on_top(t_node **stack_a);
+int		stack_len(t_node *stack);
+t_node	*find_last(t_node *stack);
+t_node	*get_cheapest(t_node *stack);
+void	free_errors(t_node *stack_a);
 
 
 #endif

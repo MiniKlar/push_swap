@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 01:15:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 04:32:59 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/25 06:44:05 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	{
+		ft_exit("Error\n");
 		exit(EXIT_FAILURE);
+	}
 	else if (argc == 2)
 		ft_split(argv[1], ' ');
 	init_stack_a(&stack_a, argv + 1);

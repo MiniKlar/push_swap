@@ -1,23 +1,30 @@
 NAME = push_swap
+
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -I includes
+CFLAGS = -Wall -Wextra -Werror -g -I ./includes -I ./LIB_C
 CLONE = git clone
-SRC = parsing.c \
-	main.c \
+
+RM = rm -f
+
+LIB_C_GIT_URL = git@github.com:MiniKlar/LIB_C.git
+LIB_C = LIB_C
+
+SRC = ./main.c \
+	./parsing.c \
 	./utils/utils.c \
 	./init_stack.c \
-	./instructions/swap_a.c \
-	./instructions/swap_b.c \
-	./instructions/swap_a_and_b.c \
-	./instructions/push_a.c \
-	./instructions/push_b.c \
-	./instructions/rotate_a.c \
-	./instructions/rotate_b.c \
-	./instructions/rotate_a_and_b.c \
-	./instructions/reverse_rotate_a.c \
-	./instructions/reverse_rotate_b.c \
-	./instructions/reverse_rotate_a_and_b.c \
-	./algorithm/sorting.c \
+	./srcs/instructions/swap_a.c \
+	./srcs/instructions/swap_b.c \
+	./srcs/instructions/swap_a_and_b.c \
+	./srcs/instructions/push_a.c \
+	./srcs/instructions/push_b.c \
+	./srcs/instructions/rotate_a.c \
+	./srcs/instructions/rotate_b.c \
+	./srcs/instructions/rotate_a_and_b.c \
+	./srcs/instructions/reverse_rotate_a.c \
+	./srcs/instructions/reverse_rotate_b.c \
+	./srcs/instructions/reverse_rotate_a_and_b.c \
+	./srcs/algorithm/sorting.c \
 	./utils.c \
 	./init_a_to_b.c \
 	./init_b_to_a.c \
@@ -30,22 +37,24 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-LIB_C:
-	$(CLONE) git@github.com:MiniKlar/LIB_C.git LIB_C; cd /home/lomont/42_miniklar/push_swap/LIB_C; make; make clean
-
-$(NAME): $(OBJ)
+$(NAME): $(LIB_C) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) ./LIB_C/LIB_C.a -o $(NAME)
 
+$(LIB_C):
+	git clone $(LIB_C_GIT_URL) $(LIB_C)
+	$(MAKE) -C $(LIB_C)
+
 %.o: %.c
-	$(CC) $(CFLAGS) -I. -o $@ -c $^
+	$(CC) $(CFLAGS) -c $< -o $@
 
 make: make all
 
 clean:
-	rm -f $(OBJ)
+	$(RM) -r $(LIB_C)
+	$(RM) $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME) LIB_C
+	$(RM) $(NAME)
 
 re: fclean LIB_C all
 
