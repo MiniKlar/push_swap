@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 01:15:51 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 06:44:05 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/27 21:41:21 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,24 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 		ft_split(argv[1], ' ');
 	init_stack_a(&stack_a, argv + 1);
-	if (!stack_sorted(stack_a))
+	if (!stack_sorted(&stack_a))
 	{
+		printf("TU ES ICI CHAKAL\n\n");
 		if (stack_len(stack_a) == 2)
-			swap_a(stack_a, false);
+			swap_a(&stack_a, false);
 		else if (stack_len(stack_a) == 3)
+		{
+			// printf("NBR STACK A = %d\n\n", stack_a->nbr);
+			// printf("next->NBR STACK A = %d\n\n", stack_a->next->nbr);
+			// printf("next->next->NBR STACK A = %d\n\n", stack_a->next->next->nbr);
+			// printf("TU ES ICI CHAKAL\n\n");
 			sort_three(&stack_a);
+		}
 		else
 			sort_stacks(&stack_a, &stack_b);
 	}
 	free_stack(stack_b);
+	printf("TU ES SORTI du main\n\n");
 	exit(EXIT_SUCCESS);
 
 // functions to handle errors && free;

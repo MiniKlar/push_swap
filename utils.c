@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 00:28:09 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 06:17:48 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/27 21:50:20 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,25 @@
 
 bool	stack_sorted(t_node *stack)
 {
+	printf("\nNB == %d\n", stack->prev->nbr);
 	if (!stack)
-		exit(EXIT_FAILURE);
-	while (stack->next != NULL)
 	{
-		if (stack->nbr > stack->next->nbr)
+		printf("TU ES SORTI DE LA FONCTION SORTED \n\n");
+		exit(EXIT_FAILURE);
+	}
+	while ((stack)->next != NULL)
+	{
+		printf("\nNB == %d\n", stack->nbr);
+		if ((stack)->nbr > (stack)->next->nbr)
+		{
+			printf("TU ES SORTI DE LA FONCTION SORTED 222 \n\n");
 			return (false);
-		stack = stack->next;
+		}
+		else
+		{
+			printf("TU ES dans le else\n\n");
+			(stack) = (stack)->next;
+		}
 	}
 	return (true);
 }
@@ -68,7 +80,7 @@ t_node	*find_max(t_node *stack)
 void	rotate_both(t_node **stack_a, t_node **stack_b, t_node *cheapest_node)
 {
 	while (*stack_b != cheapest_node->target_node && *stack_a != cheapest_node)
-		rotate_a_and_b(*stack_a, *stack_b, false);
+		rotate_a_and_b(stack_a, stack_b, false);
 	current_index(*stack_a);
 	current_index(*stack_b);
 }
@@ -80,16 +92,16 @@ void prep_for_push(t_node **stack, t_node *top_node, char stack_name)
 		if (stack_name == 'a')
 		{
 			if (top_node->above_median)
-				rotate_a(*stack, false);
+				rotate_a(stack, false);
 			else
-				reverse_rotate_a(*stack, false);
+				reverse_rotate_a(stack, false);
 		}
 		else if (stack_name == 'b')
 		{
 			if (top_node->above_median)
-				rotate_b(*stack, false);
+				rotate_b(stack, false);
 			else
-				reverse_rotate_b(*stack, false);
+				reverse_rotate_b(stack, false);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 03:37:21 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 07:00:29 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/27 21:44:31 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,17 @@ int	stack_len(t_node *stack)
 		i++;
 		stack = stack->next;
 	}
+	//printf("LEN =%d\n\n", i);
 	return (i);
 }
 
-t_node *find_last(t_node *stack)
+t_node *find_last(t_node **stack)
 {
-	if (!stack)
+	if (!(*stack))
 		return (NULL);
-	while (stack->next)
-		stack = stack->next;
-	return (stack);
+	while ((*stack)->next)
+		(*stack) = (*stack)->next;
+	return (*stack);
 }
 
 t_node *get_cheapest(t_node *stack)
@@ -85,7 +86,7 @@ void	init_stack_a(t_node **stack_a, char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		ft_printf("voici argv[%d]= %s\n", i, argv[i]);
+		ft_printf("\n\nvoici argv[%d]= %s\n", i, argv[i]);
 		if (check_numbers(argv[i]) == false)
 		{
 			free_errors(*stack_a);
@@ -94,12 +95,13 @@ void	init_stack_a(t_node **stack_a, char **argv)
 		n = ft_atol(argv[i]);
 		printf("NOMBRE : %ld\n\n", n);
 		if (n > INT_MAX || n < INT_MIN)
-			free_errors(*stack_a);
+			free_errors(*stack_a); //attention double check avec function check_numbers pour int max/min.
 		ft_printf("TU AS PASSE LE CHECK DU INT MAX/MIN\n");
 		if (check_duplicate(*stack_a, (int)n) == false)
 			free_errors(*stack_a);
 		ft_printf("TU AS PASSE LE CHECK DUPLICATE\n");
 		append_node(stack_a, n);
+		ft_printf("APRES APPEND %d\n", (*stack_a)->nbr);
 		i++;
 	}
 }
@@ -110,7 +112,10 @@ void	append_node(t_node **stack, int n)
 	t_node	*last_node;
 
 	if (!stack)
+	{
+		printf("TU SORS\n\n");
 		return ;
+	}
 	node = malloc(sizeof(*node));
 	if (!node)
 		return ;
@@ -118,13 +123,18 @@ void	append_node(t_node **stack, int n)
 	node->nbr = n;
 	if (!(*stack))
 	{
-		*stack = node;
+		printf("|||||TU CREE TA PREMIERE NODE|||||||\n\n");
+		(*stack) = node;
 		node->prev = NULL;
 	}
 	else
 	{
-		last_node = find_last(*stack);
+		printf("NODE SUIVANTE\n\n");
+		last_node = find_last(stack);
+		printf("\n-------- LAST NODE -------\n");
+		printf("\n-------- %d -------\n", last_node->nbr);
 		last_node->next = node;
-		node->prev = last_node;
+		last_node->prev = NULL;
+		//node->prev = last_node;
 	}
 }
