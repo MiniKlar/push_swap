@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 13:25:02 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/27 21:50:22 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/28 15:28:16 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,8 @@ void sort_three(t_node **stack_a)
 		rotate_a(stack_a, false);
 	else if ((*stack_a)->next == biggest_node)
 		reverse_rotate_a(stack_a, false);
-	printf("NBR STACK A = %d\n\n", (*stack_a)->nbr);
-	printf("NBR STACK A = %d\n\n", (*stack_a)->next->nbr);
-	printf("NBR STACK A = %d\n\n", (*stack_a)->next->next->nbr);
 	if ((*stack_a)->nbr > (*stack_a)->next->nbr)
 		swap_a(stack_a, false);
-	printf("NBR STACK A = %d\n\n", (*stack_a)->nbr);
-	printf("NBR STACK A = %d\n\n", (*stack_a)->next->nbr);
-	printf("NBR STACK A = %d\n\n", (*stack_a)->next->next->nbr);
 }
 
 void move_a_to_b(t_node **stack_a, t_node **stack_b)
@@ -43,13 +37,13 @@ void move_a_to_b(t_node **stack_a, t_node **stack_b)
 		reverse_rotate_a_and_b(stack_a, stack_b, cheapest_node);
 	prep_for_push(stack_a, cheapest_node, 'a');
 	prep_for_push(stack_b, cheapest_node->target_node, 'b');
-	push_b(*stack_a, *stack_b, false);
+	push_b(stack_a, stack_b, false);
 }
 
 void	move_b_to_a(t_node **stack_a, t_node **stack_b)
 {
 	prep_for_push(stack_a, (*stack_b)->target_node, 'a');
-	push_a(*stack_a, *stack_b, false);
+	push_a(stack_a, stack_b, false);
 }
 
 void	min_on_top(t_node **stack_a)
@@ -68,9 +62,9 @@ void	sort_stacks(t_node **stack_a, t_node **stack_b)
 	int	len_a;
 
 	len_a = stack_len(*stack_a);
-		push_b(*stack_a, *stack_b, false);
+		push_b(stack_a, stack_b, false);
 	if (len_a-- > 3 && !stack_sorted(*stack_a))
-		push_b(*stack_a, *stack_b, false);
+		push_b(stack_a, stack_b, false);
 	printf("NBR B%d\n\n",(*stack_b)->nbr);
 	printf("NBR B%d\n\n",(*stack_b)->next->nbr);
 	while (len_a-- > 3 && !stack_sorted(*stack_a))

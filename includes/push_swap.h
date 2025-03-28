@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 05:01:10 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/27 21:48:22 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/28 15:31:24 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	check_duplicate(t_node *stack_a, int n);
 void	swap_a(t_node **stack_a, bool print);
 void	swap_b(t_node **stack_b, bool print);
 void	swap_a_and_b(t_node **stack_a, t_node **stack_b, bool print);
-void	push_a(t_node *stack_a, t_node *stack_b, bool print);
+void	push_a(t_node **stack_a, t_node **stack_b, bool print);
 void	push_b(t_node **stack_a, t_node **stack_b, bool print);
 void	rotate_a(t_node **stack_a, bool print);
 void	rotate_b(t_node **stack_b, bool print);
@@ -71,7 +71,7 @@ void	move_a_to_b(t_node **stack_a, t_node **stack_b);
 void	move_b_to_a(t_node **stack_a, t_node **stack_b);
 void	min_on_top(t_node **stack_a);
 int		stack_len(t_node *stack);
-t_node	*find_last(t_node **stack);
+t_node	*find_last(t_node *stack);
 t_node	*get_cheapest(t_node *stack);
 void	free_errors(t_node *stack_a);
 

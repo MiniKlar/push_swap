@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 00:28:09 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/27 21:50:20 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/28 15:23:54 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 bool	stack_sorted(t_node *stack)
 {
-	printf("\nNB == %d\n", stack->prev->nbr);
+	//printf("\nNB == %d\n", stack->prev->nbr);
 	if (!stack)
 	{
 		printf("TU ES SORTI DE LA FONCTION SORTED \n\n");
-		exit(EXIT_FAILURE);
+		return (1);
 	}
-	while ((stack)->next != NULL)
+	while (stack->next)
 	{
 		printf("\nNB == %d\n", stack->nbr);
-		if ((stack)->nbr > (stack)->next->nbr)
+		if (stack->nbr > stack->next->nbr)
 		{
 			printf("TU ES SORTI DE LA FONCTION SORTED 222 \n\n");
 			return (false);
@@ -31,7 +31,8 @@ bool	stack_sorted(t_node *stack)
 		else
 		{
 			printf("TU ES dans le else\n\n");
-			(stack) = (stack)->next;
+			printf("NBR STACK = %d\n\n", stack->nbr);
+			stack = stack->next;
 		}
 	}
 	return (true);

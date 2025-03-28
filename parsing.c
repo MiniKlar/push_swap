@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
+/*   By: miniklar <miniklar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 03:37:21 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/27 21:44:31 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/28 15:18:04 by miniklar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ int	stack_len(t_node *stack)
 	return (i);
 }
 
-t_node *find_last(t_node **stack)
+t_node *find_last(t_node *stack)
 {
-	if (!(*stack))
+	if (!stack)
 		return (NULL);
-	while ((*stack)->next)
-		(*stack) = (*stack)->next;
-	return (*stack);
+	while (stack->next)
+		stack = stack->next;
+	return stack;
 }
 
 t_node *get_cheapest(t_node *stack)
@@ -121,6 +121,7 @@ void	append_node(t_node **stack, int n)
 		return ;
 	node->next = NULL;
 	node->nbr = n;
+	node->cheapest = 0;
 	if (!(*stack))
 	{
 		printf("|||||TU CREE TA PREMIERE NODE|||||||\n\n");
@@ -130,11 +131,11 @@ void	append_node(t_node **stack, int n)
 	else
 	{
 		printf("NODE SUIVANTE\n\n");
-		last_node = find_last(stack);
+		last_node = find_last(*stack);
 		printf("\n-------- LAST NODE -------\n");
 		printf("\n-------- %d -------\n", last_node->nbr);
 		last_node->next = node;
-		last_node->prev = NULL;
+		node->prev = last_node;
 		//node->prev = last_node;
 	}
 }
