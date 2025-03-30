@@ -6,20 +6,20 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 03:12:44 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 04:24:19 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/30 04:13:55 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void current_index(t_node *stack)
+void	current_index(t_node *stack)
 {
 	int	i;
 	int	median;
 
 	i = 0;
 	if (!stack)
-		exit(EXIT_FAILURE);
+		return ;
 	median = stack_len(stack) / 2;
 	while (stack)
 	{
@@ -32,6 +32,7 @@ void current_index(t_node *stack)
 		++i;
 	}
 }
+
 void	set_target_a(t_node *stack_a, t_node *stack_b)
 {
 	t_node	*current_b;
@@ -44,7 +45,8 @@ void	set_target_a(t_node *stack_a, t_node *stack_b)
 		current_b = stack_b;
 		while (current_b)
 		{
-			if (current_b->nbr < stack_a->nbr && current_b->nbr > best_match_index)
+			if (current_b->nbr < stack_a->nbr && current_b->nbr
+				> best_match_index)
 			{
 				best_match_index = current_b->nbr;
 				target_node = current_b;
@@ -58,6 +60,7 @@ void	set_target_a(t_node *stack_a, t_node *stack_b)
 		stack_a = stack_a->next;
 	}
 }
+
 void	calcul_cost_a(t_node *stack_a, t_node *stack_b)
 {
 	int	len_a;
@@ -84,7 +87,7 @@ void	set_cheapest(t_node *stack)
 	t_node	*cheapest_node;
 
 	if (!stack)
-		exit(EXIT_FAILURE);
+		return ;
 	cheapest_value = LONG_MAX;
 	while (stack)
 	{

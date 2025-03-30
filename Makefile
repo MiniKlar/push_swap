@@ -11,27 +11,17 @@ LIB_C = LIB_C
 
 SRC = ./main.c \
 	./parsing.c \
-	./utils/utils.c \
-	./init_stack.c \
-	./srcs/instructions/swap_a.c \
-	./srcs/instructions/swap_b.c \
-	./srcs/instructions/swap_a_and_b.c \
-	./srcs/instructions/push_a.c \
-	./srcs/instructions/push_b.c \
-	./srcs/instructions/rotate_a.c \
-	./srcs/instructions/rotate_b.c \
-	./srcs/instructions/rotate_a_and_b.c \
-	./srcs/instructions/reverse_rotate_a.c \
-	./srcs/instructions/reverse_rotate_b.c \
-	./srcs/instructions/reverse_rotate_a_and_b.c \
-	./srcs/algorithm/sorting.c \
-	./utils.c \
 	./init_a_to_b.c \
 	./init_b_to_a.c \
-	./init_stack.c \
 	./stack_utils.c \
-	./srcs/exit.c \
-	./srcs/free.c \
+	./srcs/instructions/swap.c \
+	./srcs/instructions/push.c \
+	./srcs/instructions/rotate.c \
+	./srcs/instructions/reverse_rotate.c \
+	./srcs/algorithm/sorting.c \
+	./srcs/utils/exit.c \
+	./srcs/utils/free.c \
+	./srcs/utils/utils.c \
 
 OBJ = $(SRC:.c=.o)
 

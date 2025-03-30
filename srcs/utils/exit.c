@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/25 02:17:58 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 05:40:13 by lomont           ###   ########.fr       */
+/*   Created: 2025/03/25 02:16:40 by lomont            #+#    #+#             */
+/*   Updated: 2025/03/30 01:54:59 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_stack(t_node *stack)
+void	ft_exit(char *str)
 {
-	t_node *tmp;
+	int	i;
 
-	if (stack == NULL)
-		exit(EXIT_FAILURE);
-	while (stack->next != NULL)
+	i = 0;
+	while (str[i])
 	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
+		write(2, &str[i], 1);
+		i++;
 	}
-	free(stack);
-}
-
-void	free_errors(t_node *stack)
-{
-	free_stack(stack);
-	ft_exit("Error\n");
+	exit(EXIT_FAILURE);
 }

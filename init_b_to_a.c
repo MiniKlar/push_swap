@@ -6,7 +6,7 @@
 /*   By: lomont <lomont@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 03:55:41 by lomont            #+#    #+#             */
-/*   Updated: 2025/03/25 04:24:16 by lomont           ###   ########.fr       */
+/*   Updated: 2025/03/30 05:19:20 by lomont           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	set_target_b(t_node *stack_a, t_node *stack_b)
 		current_a = stack_a;
 		while (current_a)
 		{
-			if (current_a->nbr > stack_b->nbr && current_a->nbr < best_match_index)
+			if (current_a->nbr > stack_b->nbr && current_a->nbr
+				< best_match_index)
 			{
 				best_match_index = current_a->nbr;
 				target_node = current_a;
@@ -44,4 +45,20 @@ void	set_target_b(t_node *stack_a, t_node *stack_b)
 			stack_b->target_node = target_node;
 		stack_b = stack_b->next;
 	}
+}
+
+bool	check_char(char *argv)
+{
+	int	i;
+
+	i = 0;
+	if (!(argv[i] == '+') || !(argv[i] == '-') || !(ft_isdigit(argv[i])))
+		return (false);
+	while (argv[i])
+	{
+		if ((ft_isdigit(argv[i]) == 0))
+			return (false);
+		i++;
+	}
+	return (true);
 }
